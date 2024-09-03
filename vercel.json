@@ -1,12 +1,24 @@
 {
     "version": 2,
     "builds": [
-      { "src": "src/server.js","use": "@vercel/node" },
-      { "src": "src/script.py", "use": "@vercel/python" }
+      {
+        "src": "src/server.js",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "api/run-python.py",
+        "use": "@vercel/python"
+      }
     ],
     "routes": [
-      { "src": "/(.*)","dest": "src/server.js"},
-      { "src": "/(.*)", "dest": "src/script.py" }
+      {
+        "src": "/api/run-python",
+        "dest": "/api/run-python.py"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/src/server.js"
+      }
     ]
   }
   
